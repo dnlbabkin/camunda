@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0v0otlh" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="TeamB" name="Team B" isExecutable="true">
+    <bpmn:endEvent id="Event_09u1qyr">
+      <bpmn:incoming>Flow_0k1l1qx</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:callActivity id="Activity_1nrzton" name="Call: GeneralPerson" calledElement="GeneratePersonData">
+      <bpmn:extensionElements>
+        <camunda:in variables="all" />
+        <camunda:out variables="all" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_03kg02h</bpmn:incoming>
+      <bpmn:outgoing>Flow_0eyqcqd</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:userTask id="Activity_10mizlk" name="resultB" camunda:assignee="Team">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="firstName" label="firstName" type="string" />
+          <camunda:formField id="lastName" label="lastName" type="string" />
+          <camunda:formField id="gender" label="gender" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0eyqcqd</bpmn:incoming>
+      <bpmn:outgoing>Flow_0k1l1qx</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_03kg02h" sourceRef="Event_1w648dw" targetRef="Activity_1nrzton" />
+    <bpmn:sequenceFlow id="Flow_0k1l1qx" sourceRef="Activity_10mizlk" targetRef="Event_09u1qyr" />
+    <bpmn:sequenceFlow id="Flow_0eyqcqd" sourceRef="Activity_1nrzton" targetRef="Activity_10mizlk" />
+    <bpmn:startEvent id="Event_1w648dw">
+      <bpmn:outgoing>Flow_03kg02h</bpmn:outgoing>
+    </bpmn:startEvent>
+  </bpmn:process>
+  <bpmn:signal id="Signal_05544ja" name="teamB" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TeamB">
+      <bpmndi:BPMNEdge id="Flow_0eyqcqd_di" bpmnElement="Flow_0eyqcqd">
+        <di:waypoint x="360" y="120" />
+        <di:waypoint x="460" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k1l1qx_di" bpmnElement="Flow_0k1l1qx">
+        <di:waypoint x="560" y="120" />
+        <di:waypoint x="612" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03kg02h_di" bpmnElement="Flow_03kg02h">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="260" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_09u1qyr_di" bpmnElement="Event_09u1qyr">
+        <dc:Bounds x="612" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1nrzton_di" bpmnElement="Activity_1nrzton">
+        <dc:Bounds x="260" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10mizlk_di" bpmnElement="Activity_10mizlk">
+        <dc:Bounds x="460" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ogcay2_di" bpmnElement="Event_1w648dw">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

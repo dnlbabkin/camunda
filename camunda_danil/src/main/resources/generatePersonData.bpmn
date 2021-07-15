@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1n7840c" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="GeneratePersonData" name="Generate person data" isExecutable="true">
+    <bpmn:extensionElements>
+      <camunda:executionListener class="com.example.workflow.jsonMap.JsonMapping" event="start" />
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="Event_0njwdgy">
+      <bpmn:outgoing>Flow_0fl9zwv</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0fl9zwv" sourceRef="Event_0njwdgy" targetRef="Activity_11dms3u" />
+    <bpmn:endEvent id="Event_0jtr59z">
+      <bpmn:incoming>Flow_1b9bf9v</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1b9bf9v" sourceRef="Activity_11dms3u" targetRef="Event_0jtr59z" />
+    <bpmn:serviceTask id="Activity_11dms3u" name="Generate Person" camunda:class="com.example.workflow.jsonMap.JsonMapping">
+      <bpmn:incoming>Flow_0fl9zwv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1b9bf9v</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:signal id="Signal_0iwdrig" name="teamA, teamB" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="GeneratePersonData">
+      <bpmndi:BPMNEdge id="Flow_0fl9zwv_di" bpmnElement="Flow_0fl9zwv">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="240" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1b9bf9v_di" bpmnElement="Flow_1b9bf9v">
+        <di:waypoint x="340" y="120" />
+        <di:waypoint x="392" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0njwdgy_di" bpmnElement="Event_0njwdgy">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0jtr59z_di" bpmnElement="Event_0jtr59z">
+        <dc:Bounds x="392" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0w92d6k_di" bpmnElement="Activity_11dms3u">
+        <dc:Bounds x="240" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
